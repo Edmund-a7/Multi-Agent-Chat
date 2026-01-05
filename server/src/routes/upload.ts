@@ -5,7 +5,8 @@ import fs from 'fs';
 import { randomUUID } from 'crypto';
 import { authMiddleware } from '../middleware/auth';
 import db from '../database';
-import pdfParse from 'pdf-parse';
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const pdfParse = require('pdf-parse');
 import { JWT_SECRET } from '../config/constants';
 import jwt from 'jsonwebtoken';
 
