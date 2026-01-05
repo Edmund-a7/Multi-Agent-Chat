@@ -21,7 +21,8 @@ export default function AISettings() {
   const [loadingModels, setLoadingModels] = useState(false);
   const [showApiKey, setShowApiKey] = useState(false);
   const [apiKeyValue, setApiKeyValue] = useState('');
-  const [isApiKeyConfigured, setIsApiKeyConfigured] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_isApiKeyConfigured, setIsApiKeyConfigured] = useState(false);
 
   // 获取可用模型列表
   const fetchModels = useCallback(async (url?: string, silent = false) => {

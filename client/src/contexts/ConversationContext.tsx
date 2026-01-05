@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
 import type { Conversation, Message } from '../types/conversation';
 import { conversationsApi } from '../services/conversationsApi';
 import { useAuth } from './AuthContext';
@@ -28,7 +28,8 @@ export function ConversationProvider({ children }: { children: ReactNode }) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(false);
   const [streamingMessageId, setStreamingMessageId] = useState<string | null>(null);
-  const [streamingContent, setStreamingContent] = useState<string>('');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_streamingContent, setStreamingContent] = useState<string>('');
   const { user } = useAuth();
 
   // 获取对话列表
