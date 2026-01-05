@@ -35,8 +35,8 @@ docker run -d \
 
 ```bash
 # 克隆项目
-git clone https://github.com/Edmund-A7/multi-agent-chat.git
-cd multi-agent-chat
+git clone https://github.com/Edmund-a7/Multi-Agent-Chat.git
+cd Multi-Agent-Chat
 
 # 启动开发服务器
 ./start.sh
