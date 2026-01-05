@@ -1,0 +1,40 @@
+# Dependencies
+node_modules
+*/node_modules
+
+# Build output (will be rebuilt in container)
+client/dist
+server/dist
+
+# Development files
+*.log
+*.md
+!README.md
+.git
+.gitignore
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test files
+*.test.ts
+*.spec.ts
+__tests__
+
+# Data files (will be mounted as volume)
+data/
+uploads/
+
+# Docker files (don't need to copy into image)
+docker-compose*.yml
+Dockerfile*

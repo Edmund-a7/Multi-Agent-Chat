@@ -1,0 +1,46 @@
+.settings-container {
+  padding: 20px;
+  min-height: 100vh;
+  background-color: #f7f8fa;
+}
+
+.settings-card {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e5e6eb;
+  margin-bottom: 24px;
+}
+
+.settings-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.settings-header-left h2 {
+  margin: 0;
+  font-size: 24px;
+  color: #1d2129;
+}
+
+.settings-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.user-info {
+  color: #4e5969;
+  font-size: 14px;
+}
+
+.settings-content {
+  margin-top: 0;
+}

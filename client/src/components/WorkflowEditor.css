@@ -1,0 +1,167 @@
+.workflow-editor {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-base);
+    animation: fadeIn 0.3s ease;
+}
+
+.workflow-editor-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 24px 24px 24px;
+}
+
+.workflow-steps-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.workflow-steps-title h3 {
+    margin: 0;
+    font-size: 16px;
+    color: var(--text-primary);
+}
+
+.workflow-step-card {
+    border-left: 4px solid var(--primary-6);
+    transition: all 0.3s ease;
+}
+
+.workflow-step-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    border-color: var(--primary-5);
+}
+
+.step-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-1);
+}
+
+.step-index {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.step-field {
+    margin-bottom: 16px;
+}
+
+.step-field:last-child {
+    margin-bottom: 0;
+}
+
+.step-field .label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.field-tip {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-top: 4px;
+}
+
+.role-avatar-small {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.no-steps {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-tertiary);
+    border: 1px dashed var(--border-2);
+    border-radius: 4px;
+}
+
+/* Timeline Connector Styles */
+.step-wrapper {
+    position: relative;
+    padding-left: 24px;
+}
+
+.step-wrapper::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-border-2);
+}
+
+.step-wrapper:last-of-type::before {
+    display: none;
+}
+
+.step-connector-dot {
+    position: absolute;
+    left: 4px;
+    top: 20px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--primary-6);
+    border: 2px solid var(--bg-base);
+    z-index: 1;
+}
+
+/* Parallel Step Indicator */
+.step-wrapper.parallel-step::before {
+    background: linear-gradient(to bottom, var(--primary-6), var(--primary-4));
+    width: 3px;
+}
+
+.step-wrapper.parallel-step .step-connector-dot {
+    background: var(--primary-5);
+    box-shadow: 0 0 0 3px rgba(var(--primary-6), 0.2);
+}
+
+.parallel-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    background: rgba(var(--primary-6), 0.1);
+    color: rgb(var(--primary-6));
+    border-radius: 4px;
+    font-size: 11px;
+    margin-left: 8px;
+}
+
+/* Collapsible Prompt */
+.prompt-collapsed {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.prompt-expanded {
+    max-height: 500px;
+    transition: max-height 0.3s ease;
+}
+
+.prompt-toggle {
+    cursor: pointer;
+    color: var(--primary-6);
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}

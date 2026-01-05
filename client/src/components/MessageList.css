@@ -1,0 +1,479 @@
+.message-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.message-list-empty {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.5s ease;
+}
+
+.message-item {
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+  animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.message-user {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.message-ai {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+.message-role-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  padding-left: 12px;
+  opacity: 0;
+  animation: fadeIn 0.3s ease 0.1s forwards;
+}
+
+.role-color-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.role-name {
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.message-bubble {
+  padding: 12px 16px;
+  border-radius: 12px;
+  word-wrap: break-word;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-1);
+  position: relative;
+}
+
+.message-bubble:hover {
+  box-shadow: var(--shadow-2);
+  transform: translateY(-1px);
+}
+
+.user-bubble {
+  background-color: var(--message-user-bg);
+  color: var(--message-user-text);
+  border-bottom-right-radius: 4px;
+}
+
+.ai-bubble {
+  background-color: var(--message-ai-bg);
+  color: var(--message-ai-text);
+  border-bottom-left-radius: 4px;
+}
+
+.message-content {
+  margin-bottom: 4px;
+  line-height: 1.6;
+}
+
+.message-content p {
+  margin: 0;
+}
+
+.message-content p+p {
+  margin-top: 8px;
+}
+
+.message-content ul,
+.message-content ol {
+  margin: 8px 0;
+  padding-left: 24px;
+}
+
+.message-content li {
+  margin: 4px 0;
+}
+
+.message-content code {
+  background-color: var(--bg-2);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+  font-size: 13px;
+  border: 1px solid var(--border-2);
+  transition: all 0.2s ease;
+}
+
+/* 代码块包装器 - 带语法高亮 */
+.code-block-wrapper {
+  margin: 12px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-2);
+  background-color: #282c34;
+}
+
+.code-block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: #21252b;
+  border-bottom: 1px solid #181a1f;
+}
+
+.code-language {
+  font-size: 12px;
+  font-weight: 600;
+  color: #abb2bf;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.code-copy-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #abb2bf;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.code-copy-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.code-copy-btn svg {
+  font-size: 14px;
+}
+
+/* 附件显示 */
+.message-attachments {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.attachment-image {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.attachment-name {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.message-content pre {
+  background-color: var(--bg-2);
+  padding: 12px;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 8px 0;
+  border: 1px solid var(--border-2);
+  transition: all 0.2s ease;
+}
+
+.message-content pre code {
+  background: none;
+  padding: 0;
+  border: none;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.user-bubble .message-content pre {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.user-bubble .message-content code {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.message-time {
+  font-size: 11px;
+  opacity: 0.6;
+  text-align: right;
+  transition: opacity 0.2s ease;
+}
+
+.message-bubble:hover .message-time {
+  opacity: 0.8;
+}
+
+.message-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.message-actions {
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  animation: fadeIn 0.2s ease forwards;
+}
+
+.message-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background-color: var(--bg-2);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-secondary);
+  font-size: 14px;
+  padding: 0;
+}
+
+.message-action-btn:hover {
+  background-color: var(--bg-3);
+  color: var(--text-primary);
+  transform: scale(1.05);
+}
+
+.message-action-delete:hover {
+  background-color: #f53f3f;
+  color: white;
+}
+
+.user-bubble .message-action-btn {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.user-bubble .message-action-btn:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: white;
+}
+
+.user-bubble .message-action-delete:hover {
+  background-color: rgba(245, 63, 63, 0.9);
+}
+
+/* 流式输入指示器 */
+.streaming-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: var(--primary);
+  margin-left: 2px;
+  animation: blink 1s infinite;
+  vertical-align: text-bottom;
+}
+
+@keyframes blink {
+
+  0%,
+  49% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.message-streaming {
+  position: relative;
+}
+
+.message-streaming::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+
+
+/* Markdown 特殊样式 */
+.message-content h1,
+.message-content h2,
+.message-content h3 {
+  margin: 12px 0 8px 0;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.message-content h1 {
+  font-size: 1.5em;
+}
+
+.message-content h2 {
+  font-size: 1.3em;
+}
+
+.message-content h3 {
+  font-size: 1.1em;
+}
+
+.message-content blockquote {
+  margin: 8px 0;
+  padding-left: 12px;
+  border-left: 3px solid var(--border-3);
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.message-content a {
+  color: var(--primary);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.message-content a:hover {
+  border-bottom-color: var(--primary);
+}
+
+/* Markdown 图片样式 */
+.message-image-wrapper {
+  margin: 8px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.message-markdown-image {
+  max-width: 100%;
+  max-height: 400px;
+  display: block;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  background-color: var(--bg-2);
+}
+
+.message-markdown-image:hover {
+  transform: scale(1.02);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .message-item {
+    max-width: 85%;
+  }
+
+  .message-list {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .message-bubble {
+    padding: 10px 14px;
+  }
+}
+
+/* 思考过程折叠区域 */
+.reasoning-collapse {
+  margin-bottom: 8px;
+  max-width: 100%;
+}
+
+.reasoning-collapse .arco-collapse-item {
+  border: none !important;
+  background: linear-gradient(135deg, rgba(124, 77, 255, 0.08), rgba(99, 102, 241, 0.06));
+  border-radius: 10px !important;
+  overflow: hidden;
+}
+
+.reasoning-collapse .arco-collapse-item-header {
+  padding: 8px 12px !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.reasoning-collapse .arco-collapse-item-header:hover {
+  background: rgba(124, 77, 255, 0.12) !important;
+}
+
+.reasoning-header {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: var(--color-primary-light);
+  font-weight: 500;
+}
+
+.reasoning-header svg {
+  color: #f0a020;
+}
+
+.reasoning-collapse .arco-collapse-item-content {
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+.reasoning-collapse .arco-collapse-item-content-box {
+  padding: 10px 14px !important;
+}
+
+.reasoning-content {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-tertiary);
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 300px;
+  overflow-y: auto;
+  font-style: italic;
+  border-left: 2px solid rgba(124, 77, 255, 0.3);
+  padding-left: 12px;
+  margin-left: 4px;
+}
+
+.reasoning-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.reasoning-content::-webkit-scrollbar-thumb {
+  background-color: rgba(124, 77, 255, 0.3);
+  border-radius: 2px;
+}

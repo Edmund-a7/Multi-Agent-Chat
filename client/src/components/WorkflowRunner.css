@@ -1,0 +1,131 @@
+.workflow-runner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--bg-1);
+}
+
+.runner-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+}
+
+.input-card {
+    margin-bottom: 24px;
+}
+
+.execution-area {
+    margin-bottom: 24px;
+    background: var(--bg-base);
+    padding: 20px;
+    border-radius: 4px;
+    border: 1px solid var(--border-2);
+}
+
+.workflow-steps-indicator {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* 限制 Steps 组件描述区域的宽度 */
+.workflow-steps-indicator .arco-steps-item-description {
+    max-width: calc(100vw - 400px);
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .workflow-steps-indicator .arco-steps-item-description {
+        max-width: calc(100vw - 80px);
+    }
+}
+
+.step-detail-box {
+    margin-top: 8px;
+    width: 100%;
+    /* 强制限制最大宽度，避免被父级 Steps 组件撑开 */
+    max-width: calc(100vw - 440px);
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .step-detail-box {
+        max-width: calc(100vw - 100px);
+    }
+}
+
+.step-detail-box .markdown-body {
+    max-width: 100%;
+    overflow-x: auto;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+.step-detail-box .markdown-body pre {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.step-detail-box .markdown-body p,
+.step-detail-box .markdown-body li {
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+.step-running {
+    padding: 12px;
+    background: var(--bg-1);
+    border-radius: 4px;
+    border: 1px solid var(--primary-3);
+    margin-top: 8px;
+}
+
+.streaming-output {
+    margin-top: 8px;
+    font-family: monospace;
+    font-size: 13px;
+    color: var(--text-secondary);
+    white-space: pre-wrap;
+    word-break: break-all;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.result-collapse {
+    margin-top: 8px;
+    background: transparent;
+    border: none;
+}
+
+.result-collapse .arco-collapse-item-content {
+    background: var(--bg-1);
+    padding: 12px;
+}
+
+.error-msg {
+    margin-top: 8px;
+    color: rgb(var(--red-6));
+    background: var(--color-danger-light-1);
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.result-card {
+    margin-top: 24px;
+    border: 1px solid var(--success-5);
+}
+
+.result-card .arco-card-header {
+    background-color: var(--success-1);
+    color: var(--success-6);
+}
+
+.global-error {
+    margin-top: 24px;
+    padding: 12px;
+    background: var(--color-danger-light-1);
+    color: rgb(var(--red-6));
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+}

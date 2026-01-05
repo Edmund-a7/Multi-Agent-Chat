@@ -1,0 +1,256 @@
+/* ==========================================
+   Multi-Agent Chat Theme System
+   Inspired by AionUI design patterns
+   ========================================== */
+
+/* ========== Light Mode (Default) ========== */
+:root,
+[data-theme='light'] {
+  /* Brand Colors */
+  --primary: #3370ff;
+  --primary-hover: #4080ff;
+  --primary-active: #2060ef;
+
+  /* Backgrounds - 清爽浅灰调 */
+  --bg-base: #ffffff;
+  --bg-1: #f5f5f5;
+  --bg-2: #eaeaea;
+  --bg-3: #d4d4d4;
+  --bg-4: #a3a3a3;
+  --bg-hover: #f0f0f0;
+  --bg-active: #e5e5e5;
+
+  /* Text Colors */
+  --text-primary: #1a1a1a;
+  --text-secondary: #737373;
+  --text-tertiary: #a3a3a3;
+  --text-disabled: #d4d4d4;
+
+  /* Borders */
+  --border-1: #f5f5f5;
+  --border-2: #e5e5e5;
+  --border-3: #d4d4d4;
+
+  /* Semantic Colors */
+  --success: #00b42a;
+  --warning: #ff7d00;
+  --danger: #f53f3f;
+  --info: #165dff;
+
+  /* Message Specific */
+  --message-user-bg: #e8f1ff;
+  --message-ai-bg: #f5f5f5;
+  --message-user-text: #1a1a1a;
+  --message-ai-text: #1a1a1a;
+
+  /* Shadows - 清晰的阴影 */
+  --shadow-1: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-2: 0 2px 6px rgba(0, 0, 0, 0.12);
+  --shadow-3: 0 4px 12px rgba(0, 0, 0, 0.16);
+
+  /* Special */
+  --overlay: rgba(0, 0, 0, 0.4);
+}
+
+/* ========== Dark Mode ========== */
+[data-theme='dark'] {
+  /* Brand Colors */
+  --primary: #4080ff;
+  --primary-hover: #5090ff;
+  --primary-active: #3070ef;
+
+  /* Backgrounds */
+  --bg-base: #17171a;
+  --bg-1: #1e1e21;
+  --bg-2: #26262a;
+  --bg-3: #36363a;
+  --bg-4: #5e5e62;
+  --bg-hover: #2a2a2e;
+  --bg-active: #36363a;
+
+  /* Text Colors */
+  --text-primary: #e5e6eb;
+  --text-secondary: #86909c;
+  --text-tertiary: #5e5e62;
+  --text-disabled: #36363a;
+
+  /* Borders */
+  --border-1: #26262a;
+  --border-2: #36363a;
+  --border-3: #5e5e62;
+
+  /* Semantic Colors */
+  --success: #23c343;
+  --warning: #ff9933;
+  --danger: #f76560;
+  --info: #4080ff;
+
+  /* Message Specific */
+  --message-user-bg: #1e3a8a;
+  --message-ai-bg: #26262a;
+  --message-user-text: #e5e6eb;
+  --message-ai-text: #e5e6eb;
+
+  /* Shadows */
+  --shadow-1: 0 1px 4px rgba(0, 0, 0, 0.2);
+  --shadow-2: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-3: 0 4px 16px rgba(0, 0, 0, 0.4);
+
+  /* Special */
+  --overlay: rgba(0, 0, 0, 0.6);
+}
+
+/* ========== Base Styles ========== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+               'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica,
+               Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background-color: var(--bg-base);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ========== Scrollbar Styling ========== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-3);
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bg-4);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bg-3) transparent;
+}
+
+/* ========== Selection ========== */
+::selection {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* ========== Focus Styles ========== */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ========== Animations ========== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ========== Utility Classes ========== */
+.fade-in {
+  animation: fadeIn 0.3s ease;
+}
+
+.slide-up {
+  animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide-in {
+  animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.loading {
+  animation: spin 1s linear infinite;
+}
+
+.pulse {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* ========== Transitions ========== */
+.transition-colors {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.transition-opacity {
+  transition: opacity 0.25s ease;
+}
+
+.transition-transform {
+  transition: transform 0.25s ease;
+}
+
+.transition-all {
+  transition: all 0.25s ease;
+}
