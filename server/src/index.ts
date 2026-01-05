@@ -58,7 +58,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(publicPath));
 
   // SPA fallback - 所有非 API 路由返回 index.html
-  app.get('*', (req, res) => {
+  app.use((req, res) => {
     if (!req.path.startsWith('/api')) {
       res.sendFile(path.join(publicPath, 'index.html'));
     } else {
