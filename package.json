@@ -1,0 +1,94 @@
+{
+  "name": "multi-agent-chat",
+  "version": "1.0.0",
+  "description": "一个支持多角色对话和工作流自动化的 AI Chat 应用",
+  "main": "dist-electron/main/main.js",
+  "author": "Edmund",
+  "license": "MIT",
+  "scripts": {
+    "dev": "./start.sh",
+    "electron:dev": "npm run build:electron && electron .",
+    "electron:build": "npm run build:all && electron-builder",
+    "electron:build:mac": "npm run build:all && electron-builder --mac",
+    "electron:build:win": "npm run build:all && electron-builder --win",
+    "electron:build:linux": "npm run build:all && electron-builder --linux",
+    "build:electron": "tsc -p tsconfig.electron.json",
+    "build:server": "cd server && npm run build",
+    "build:client": "cd client && npm run build",
+    "build:all": "npm run build:server && npm run build:client && npm run build:electron",
+    "clean:data": "./scripts/clean-data.sh",
+    "postinstall": "cd server && npm install && cd ../client && npm install"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^25.0.3",
+    "electron": "^33.4.2",
+    "electron-builder": "^25.1.8",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "axios": "^1.13.2",
+    "bcrypt": "^6.0.0",
+    "better-sqlite3": "^12.5.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.0.2",
+    "pdf-parse": "^2.4.5"
+  },
+  "build": {
+    "appId": "com.multiagent.chat",
+    "productName": "Multi-Agent Chat",
+    "copyright": "Copyright © 2026",
+    "directories": {
+      "output": "release",
+      "buildResources": "resources"
+    },
+    "files": [
+      "dist-electron/**/*",
+      "server/dist/**/*",
+      "client/dist/**/*",
+      "server/node_modules/**/*",
+      "node_modules/better-sqlite3/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "server/node_modules/better-sqlite3",
+        "to": "better-sqlite3"
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.productivity",
+      "icon": "resources/icon.icns",
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "artifactName": "${productName}-${version}-${os}-${arch}.${ext}"
+    },
+    "win": {
+      "icon": "resources/icon.ico",
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "artifactName": "${productName}-${version}-${os}-${arch}.${ext}"
+    },
+    "linux": {
+      "icon": "resources/icon.png",
+      "category": "Office",
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "artifactName": "${productName}-${version}-${os}-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}

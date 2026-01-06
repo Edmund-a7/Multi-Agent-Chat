@@ -3,8 +3,19 @@ import path from 'path';
 import fs from 'fs';
 import { User } from './types';
 
+// 获取数据目录
+function getDataDir(): string {
+  // Electron 环境下使用传入的用户数据路径
+  if (process.env.USER_DATA_PATH) {
+    return process.env.USER_DATA_PATH;
+  }
+  // 默认使用相对路径
+  return path.join(__dirname, '../../data');
+}
+
+const dataDir = getDataDir();
+
 // 确保 data 目录存在
-const dataDir = path.join(__dirname, '../../data');
 if (!fs.existsSync(dataDir)) {
   fs.mkdirSync(dataDir, { recursive: true });
 }

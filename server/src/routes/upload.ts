@@ -12,8 +12,19 @@ import jwt from 'jsonwebtoken';
 
 const router = Router();
 
+// 获取上传目录
+function getUploadsDir(): string {
+  // Electron 环境下使用用户数据路径
+  if (process.env.USER_DATA_PATH) {
+    return path.join(process.env.USER_DATA_PATH, 'uploads');
+  }
+  // 默认使用相对路径
+  return path.join(__dirname, '../../uploads');
+}
+
+const uploadsDir = getUploadsDir();
+
 // 确保上传目录存在
-const uploadsDir = path.join(__dirname, '../../uploads');
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir, { recursive: true });
 }
